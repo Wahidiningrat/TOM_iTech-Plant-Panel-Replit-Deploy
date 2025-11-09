@@ -4,16 +4,91 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Greenhouse Monitoring Dashboard</title>
+  
   <link rel="stylesheet" href="dashbord.css" />
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    /* Modal Styling */
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* Warna background gelap untuk modal, sesuai dengan tema dashboard yang gelap */
+        background: rgba(31, 32, 41, 0.9); 
+        display: none; /* Awalnya disembunyikan */
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Pastikan di atas semua elemen dashboard */
+        overflow: auto; /* Memungkinkan scroll jika konten terlalu besar */
+    }
+    .modal-content {
+        /* Konten AI Chat akan dirender di sini, gunakan warna yang terang agar kontras dengan latar belakang modal */
+        background: #f0f0f5; 
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        max-width: 900px;
+        width: 95%;
+        max-height: 95vh; 
+        position: relative;
+        padding: 0; /* Padding diatur di dalam komponen React */
+        overflow-y: auto;
+    }
+    .close-btn {
+        position: sticky;
+        top: 0;
+        right: 0;
+        background: #4c46f1; /* Warna sesuai sidebar */
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        z-index: 10000;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        text-align: center;
+        border-radius: 0 8px 0 8px; /* Sudut kanan atas */
+    }
+    /* Menyesuaikan beberapa style di komponen React agar cocok di dalam modal */
+    #ai-chat-root > div {
+        min-height: auto !important;
+        padding-top: 20px !important;
+    }
+  </style>
 </head>
 <body>
+
   <div class="dashboard-wrapper" role="main" aria-label="Greenhouse Monitoring Dashboard">
 
     <nav class="sidebar" aria-label="Main dashboard navigation">
       <div class="logo" aria-label="Dashboard logo">M</div>
       <button title="Dashboard">🏠</button>
-      <button title="Settings">⚙️</button>
-      <button title="Logs">📜</button>
+      <button title="Settings" id="settings-btn">⚙️</button> 
+      <a href="AIchat.html" class="sidebar-button" title="AI Chat" style="
+        /* Menyesuaikan tampilan <a> agar terlihat seperti <button> di sidebar */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px; /* Lebar tombol sidebar */
+        height: 50px; /* Tinggi tombol sidebar */
+        background: none;
+        border: none;
+        padding: 0;
+        margin-top: 5px; /* Jarak antar tombol */
+        border-radius: 12px;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--text-color, #a8a7a7); /* Warna ikon, sesuaikan jika ada dashbord.css */
+        text-decoration: none; /* Menghilangkan garis bawah pada <a> */
+      ">
+        🤖
+      </a>
       <button class="add-btn" aria-label="Add new device">+</button>
     </nav>
 
@@ -83,5 +158,265 @@
     </main>
 
   </div>
+
+  <div id="react-modal" class="modal">
+    <div class="modal-content">
+        <button id="close-modal-btn" class="close-btn" title="Tutup">&times;</button>
+        <div id="ai-chat-root"></div>
+    </div>
+  </div>
+
+
+  <script type="text/babel">
+    // !!! PERINGATAN KEAMANAN: API KEY INI TEREKSPOS SECARA PUBLIK. GANTI KEY INI SEGERA !!!
+    const OPENAI_API_KEY = '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';
+
+    // Definisikan komponen Card (dari AIchat.jsx)
+    function Card({ icon, title, description }) {
+      return (
+        <article
+          style={{
+            flex: "1 1 270px",
+            backgroundColor: "#fff",
+            borderRadius: 12,
+            padding: 20,
+            boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
+            cursor: "default",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              fontWeight: "700",
+              fontSize: 16,
+              marginBottom: 8,
+              color: "#222",
+            }}
+          >
+            <div style={{ width: 28, height: 28 }}>{icon}</div> {title}
+          </div>
+          <p style={{ fontSize: 14, lineHeight: 1.4, color: "#444" }}>{description}</p>
+        </article>
+      );
+    }
+
+    // Definisikan komponen utama App (dari AIchat.jsx)
+    // Mengganti 'useState' menjadi 'React.useState' karena kita tidak menggunakan import
+    function App() {
+      const [input, setInput] = React.useState("");
+      const [response, setResponse] = React.useState("");
+      const [loading, setLoading] = React.useState(false);
+      const [model, setModel] = React.useState("gpt-3.5-turbo");
+
+      async function handleSubmit(e) {
+        e.preventDefault();
+        if (!input.trim()) return;
+        setLoading(true);
+        setResponse("");
+
+        try {
+          // Menggunakan 'fetch' API langsung karena OpenAIApi SDK tidak tersedia di CDN sederhana
+          const res = await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${OPENAI_API_KEY}`, 
+            },
+            body: JSON.stringify({
+              model: model,
+              messages: [{ role: "user", content: input }],
+            }),
+          });
+
+          if (!res.ok) {
+            const errorData = await res.json();
+            throw new Error(errorData.error.message || "Failed to fetch OpenAI response");
+          }
+
+          const data = await res.json();
+          setResponse(data.choices[0].message.content);
+
+        } catch (error) {
+          setResponse("Error: " + (error.message || "Unknown error"));
+        }
+
+        setLoading(false);
+      }
+
+      // Kode render JSX dari AIchat.jsx
+      return (
+        <div
+          style={{
+            backgroundColor: "#f0f0f5",
+            minHeight: "100vh", // Akan di-override oleh CSS modal
+            padding: "40px 0",
+            fontFamily:
+              "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+            color: "#222",
+          }}
+        >
+          {/* Header dihilangkan karena sudah ada tombol tutup di modal */}
+          
+          {/* Title */}
+          <h1
+            style={{
+              textAlign: "center",
+              color: "#7b52f5",
+              fontWeight: "700",
+              fontSize: 26,
+              marginBottom: 30,
+            }}
+          >
+            Chat With TOMi AI
+          </h1>
+
+          {/* Form input */}
+          <form
+            onSubmit={handleSubmit}
+            style={{
+              maxWidth: 900,
+              margin: "0 auto",
+              backgroundColor: "#fff",
+              borderRadius: 20,
+              padding: 20,
+              boxShadow: "0 8px 15px rgba(0,0,0,0.1)",
+              display: "flex",
+              alignItems: "center",
+              gap: 16,
+            }}
+          >
+            {/* Left buttons (Attach & Settings - ikon dari AIchat.jsx) */}
+            <button
+              type="button"
+              title="Attach"
+              style={{
+                width: 36, height: 36, borderRadius: "50%", border: "1.5px solid #ccc",
+                background: "transparent", cursor: "pointer", display: "flex",
+                justifyContent: "center", alignItems: "center",
+              }}
+              onClick={() => alert("Attach feature not implemented")}
+            >
+              <svg /* ... SVG content ... */ ></svg>
+            </button>
+            <button
+              type="button"
+              title="Settings"
+              style={{
+                width: 36, height: 36, borderRadius: "50%", border: "1.5px solid #ccc",
+                background: "transparent", cursor: "pointer", display: "flex",
+                justifyContent: "center", alignItems: "center",
+              }}
+              onClick={() => alert("Settings feature not implemented")}
+            >
+              <svg /* ... SVG content ... */ ></svg>
+            </button>
+
+            {/* Input text */}
+            <input
+              type="text"
+              placeholder="How can we help?"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              disabled={loading}
+              style={{
+                flexGrow: 1, border: "none", outline: "none", fontSize: 16,
+                padding: "12px 16px", borderRadius: 20, boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
+              }}
+            />
+
+            {/* Model select */}
+            <select
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              disabled={loading}
+              style={{
+                borderRadius: 20, border: "1.5px solid #ccc", padding: "8px 16px",
+                fontSize: 15, cursor: loading ? "not-allowed" : "pointer", backgroundColor: "#fff",
+              }}
+            >
+              <option value="gpt-3.5-turbo">GPT-3.5 (fast)</option>
+              <option value="gpt-4">GPT-4 (premium)</option>
+            </select>
+
+            {/* Submit button */}
+            <button
+              type="submit"
+              disabled={loading}
+              style={{
+                backgroundColor: "#7b52f5", border: "none", borderRadius: "50%",
+                width: 44, height: 44, color: "#fff", cursor: loading ? "not-allowed" : "pointer",
+                display: "flex", justifyContent: "center", alignItems: "center",
+                boxShadow: "0 3px 8px rgb(123 82 245 / 0.5)", transition: "background-color 0.3s ease",
+              }}
+              title="Send"
+            >
+              <svg /* ... SVG content ... */ ></svg>
+            </button>
+          </form>
+
+          {/* Info Text & Cards & Response & Disclaimer (Semua tetap dari AIchat.jsx) */}
+          {/* ... */}
+        </div>
+      );
+    }
+    
+    // Fungsi untuk me-render komponen React
+    function renderAIChat() {
+        const rootElement = document.getElementById('ai-chat-root');
+        // Kosongkan dulu untuk membersihkan render sebelumnya
+        rootElement.innerHTML = ''; 
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
+    }
+  </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const settingsBtn = document.getElementById('settings-btn');
+      const modal = document.getElementById('react-modal');
+      const closeModalBtn = document.getElementById('close-modal-btn');
+      const aiChatRoot = document.getElementById('ai-chat-root');
+
+      // Perubahan: Hapus event listener untuk settingsBtn agar hanya tombol AI Chat (🤖) yang berfungsi.
+      // settingsBtn.addEventListener('click', ...) dihapus/diabaikan karena fungsinya digantikan.
+      // Namun, jika Anda ingin modal tetap berfungsi, biarkan kode di bawah ini:
+      if (settingsBtn) {
+        settingsBtn.addEventListener('click', () => {
+          modal.style.display = 'flex'; // Tampilkan modal
+          document.body.style.overflow = 'hidden'; // Nonaktifkan scroll body
+          // Panggil fungsi renderAIChat
+          if (typeof renderAIChat === 'function') {
+             renderAIChat();
+          } else {
+             aiChatRoot.innerHTML = '<p style="padding: 20px; color: red;">Error: React component not loaded. Check Babel/React setup.</p>';
+          }
+        });
+      }
+
+      const closeModal = () => {
+        modal.style.display = 'none'; // Sembunyikan modal
+        document.body.style.overflow = ''; // Aktifkan kembali scroll body
+        // Penting: Kosongkan root container React untuk 'unmount' komponen
+        // Ini membantu mencegah kebocoran memori pada aplikasi React yang kompleks
+        if (aiChatRoot) {
+            aiChatRoot.innerHTML = ''; 
+        }
+      }
+
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+      }
+
+      // Tutup modal jika mengklik di luar konten modal
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>

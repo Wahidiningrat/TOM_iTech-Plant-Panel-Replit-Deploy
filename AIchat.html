@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SayHalo TOM_ITech</title>
+  <link rel="stylesheet" href="AIchat.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-icon" aria-hidden="true">👋</div>
+    <div class="logo-text">TOM_ITech</div>
+  </header>
+
+  <main>
+    <div class="center-icon" aria-hidden="true">👋</div>
+    <h1>Hi, <span>Operators</span></h1>
+    <p class="description">
+      Ready to assist you with anything you need, from answering questions to providing recommendations. Let's get started!
+    </p>
+
+    <div id="chat-container">
+      <div id="chat-messages" aria-live="polite" aria-atomic="true"></div>
+      <form id="input-area" aria-label="Ask SayHalo anything form">
+        <input type="text" id="user-input" autocomplete="off" placeholder="Ask SayHalo anything..." aria-label="Ask SayHalo anything" required />
+        <button type="submit" id="send-btn" aria-label="Send message">
+          Send <span>→</span>
+        </button>
+      </form>
+    </div>
+
+    <div class="cards" id="cards">
+      <div class="card" data-prompt="How to improve plant performance with ESP32">
+        <div class="card-icon" aria-hidden="true">✈️</div>
+        <h3 class="card-title">Useable performance with ESP32</h3>
+        <div class="card-subtitle">Wanna-Try it</div>
+      </div>
+      <div class="card highlighted" data-prompt="What sets TOM_ITech AI apart?">
+        <div class="card-icon" aria-hidden="true">👋</div>
+        <h3 class="card-title">TOM_ITech AI: What Sets Us Apart</h3>
+        <div class="card-subtitle">Key Differentiators</div>
+      </div>
+      <div class="card" data-prompt="How To Keep Plant Life">
+        <div class="card-icon" aria-hidden="true">🎨</div>
+        <h3 class="card-title">How To Keep Plant Life</h3>
+        <div class="card-subtitle">Learn Now</div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
