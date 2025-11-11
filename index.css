@@ -7,7 +7,7 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #1e0f4d;
+  background: #008000; /* Hijau gelap sebagai base */
   color: #dddde3;
   min-height: 100vh;
   display: flex;
@@ -24,8 +24,8 @@ body::after {
   position: fixed;
   inset: 0;
   background:
-    linear-gradient(0deg, transparent 24%, #4f3582 25%, #4f3582 26%, transparent 27%, transparent 74%, #4f3582 75%, #4f3582 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, #4f3582 25%, #4f3582 26%, transparent 27%, transparent 74%, #4f3582 75%, #4f3582 76%, transparent 77%, transparent);
+    linear-gradient(0deg, transparent 24%, #228B22 25%, #228B22 26%, transparent 27%, transparent 74%, #228B22 75%, #228B22 76%, transparent 77%, transparent),
+    linear-gradient(90deg, transparent 24%, #228B22 25%, #228B22 26%, transparent 27%, transparent 74%, #228B22 75%, #228B22 76%, transparent 77%, transparent);
   background-size: 3rem 3rem;
   pointer-events: none;
   z-index: 0;
@@ -42,8 +42,8 @@ body::before {
   max-width: 1600px;
   max-height: 1600px;
   background:
-    radial-gradient(circle at center, #7f52ffdd 6%, transparent 50%),
-    repeating-radial-gradient(circle at center, transparent 0 58%, #592db988 58% 64%);
+    radial-gradient(circle at center, #32CD32dd 6%, transparent 50%), /* Hijau lime */
+    repeating-radial-gradient(circle at center, transparent 0 58%, #FFFF0088 58% 64%); /* Kuning */
   border-radius: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
@@ -71,7 +71,7 @@ header {
 .logo svg {
   width: 40px;
   height: 40px;
-  filter: drop-shadow(0 0 3px #9b77ff8a);
+  filter: drop-shadow(0 0 3px #90EE908a); /* Hijau muda */
 }
 
 nav {
@@ -80,7 +80,7 @@ nav {
 }
 
 nav a {
-  color: #bba9f9;
+  color: #90EE90; /* Hijau muda */
   font-weight: 600;
   font-size: 15px;
   text-decoration: none;
@@ -88,7 +88,7 @@ nav a {
 }
 
 nav a:hover {
-  color: #b095ff;
+  color: #32CD32; /* Hijau lime */
 }
 
 .auth-buttons {
@@ -100,20 +100,20 @@ nav a:hover {
 
 /* Mengubah .auth-buttons .login dari span menjadi anchor */
 .auth-buttons .login {
-  color: #bba9f9;
+  color: #90EE90; /* Hijau muda */
   cursor: pointer;
   font-size: 15px;
   transition: color 0.3s ease;
-  text-decoration: none; /* Tambahkan ini agar tidak ada garis bawah default pada link */
+  text-decoration: none;
 }
 
 .auth-buttons .login:hover {
-  color: #b095ff;
+  color: #32CD32; /* Hijau lime */
 }
 
 /* Mengubah .auth-buttons .btn-getstarted dari button menjadi anchor */
 .auth-buttons .btn-getstarted {
-  background: linear-gradient(90deg, #8f5dff 0%, #bb88ff 100%);
+  background: linear-gradient(90deg, #228B22 0%, #FFFF00 100%); /* Hijau gelap ke kuning */
   border-radius: 100px;
   color: white;
   padding: 9px 24px;
@@ -121,14 +121,14 @@ nav a:hover {
   font-size: 15px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 3px 10px #a47affaa;
+  box-shadow: 0 3px 10px #32CD32aa; /* Shadow hijau lime */
   transition: background 0.3s ease;
-  text-decoration: none; /* Tambahkan ini */
-  display: inline-block; /* Tambahkan ini agar padding bekerja seperti pada button */
+  text-decoration: none;
+  display: inline-block;
 }
 
 .auth-buttons .btn-getstarted:hover {
-  background: linear-gradient(90deg, #ad78ff 0%, #d0a6ff 100%);
+  background: linear-gradient(90deg, #32CD32 0%, #FFD700 100%); /* Hijau lime ke kuning emas */
 }
 
 /* Main content */
@@ -146,7 +146,7 @@ main {
   width: 80px;
   height: 80px;
   margin: 0 auto 24px;
-  filter: drop-shadow(0 0 15px #a689ffcc);
+  filter: drop-shadow(0 0 15px #32CD32cc); /* Hijau lime */
 }
 
 h1 {
@@ -160,13 +160,13 @@ h1 {
 
 h1 strong {
   font-weight: 700;
-  color: #dadada;
+  color: #FFFF00; /* Kuning */
 }
 
 p.subtitle {
   font-weight: 400;
   font-size: 15px;
-  color: #b8a5f7cc;
+  color: #90EE90cc; /* Hijau muda transparan */
   line-height: 1.5;
   max-width: 500px;
   margin: 0 auto 36px auto;
@@ -187,31 +187,31 @@ p.subtitle {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 10px #944dff99;
-  text-decoration: none; /* Tambahkan ini */
-  display: inline-block; /* Tambahkan ini */
+  box-shadow: 0 3px 10px #228B2299; /* Shadow hijau gelap */
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #7a39ff 0%, #ad80ff 100%);
+  background: linear-gradient(90deg, #008000 0%, #32CD32 100%); /* Hijau gelap ke lime */
   color: white;
-  box-shadow: 0 5px 15px #9169ffcc;
+  box-shadow: 0 5px 15px #228B22cc; /* Shadow hijau gelap */
 }
 
 .btn-primary:hover {
-  background: linear-gradient(90deg, #9758ff 0%, #d1a8ff 100%);
-  box-shadow: 0 7px 20px #cfaeffdd;
+  background: linear-gradient(90deg, #228B22 0%, #90EE90 100%); /* Hijau gelap ke muda */
+  box-shadow: 0 7px 20px #32CD32dd; /* Shadow hijau lime */
 }
 
 .btn-secondary {
-  background: #261b44;
-  color: #d1c9f6;
-  box-shadow: 0 4px 12px #442f8bbb;
+  background: #1e4d1e; /* Hijau gelap */
+  color: #90EE90; /* Hijau muda */
+  box-shadow: 0 4px 12px #228B22bb; /* Shadow hijau gelap */
 }
 
 .btn-secondary:hover {
-  background: #392d74;
-  box-shadow: 0 6px 18px #614bbbcc;
+  background: #228B22; /* Hijau gelap */
+  box-shadow: 0 6px 18px #32CD32cc; /* Shadow hijau lime */
 }
 
 /* Brands section */
@@ -230,7 +230,7 @@ p.subtitle {
 
 .brands img {
   max-height: 20px;
-  filter: invert(80%) sepia(20%) saturate(600%) hue-rotate(190deg);
+  filter: invert(80%) sepia(20%) saturate(600%) hue-rotate(90deg); /* Sesuaikan hue ke hijau */
   opacity: 0.25;
   transition: opacity 0.3s ease;
 }

@@ -1,7 +1,9 @@
 /* RESET & FONT */
 body {
-  background-color: #0a0a23;
-  color: #c6b5ff;
+  /* Diubah ke latar belakang hijau tua/zaitun */
+  background-color: #2a311f;
+  /* Diubah ke warna teks kuning/hijau pucat */
+  color: #e8f5e0;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-height: 100vh;
@@ -13,13 +15,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #080824;
+  /* Diubah ke latar belakang navbar hijau tua */
+  background-color: #21261a;
   padding: 0 1.5rem;
   height: 56px;
-  box-shadow: 0 0 20px #6328ff44 inset;
-  border-bottom: 1px solid #3e2ca1;
+  /* Diubah ke bayangan hijau */
+  box-shadow: 0 0 20px #8bc34a44 inset;
+  /* Diubah ke batas bawah hijau tua */
+  border-bottom: 1px solid #4f5a3f;
   font-size: 0.9rem;
-  color: #bb99ff;
+  /* Diubah ke warna teks navbar hijau muda */
+  color: #c8d7a8;
   user-select: none;
   position: sticky;
   top: 0;
@@ -36,13 +42,13 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  color: #bb99ff;
+  color: #c8d7a8;
   display: flex;
   padding: 0;
   transition: color 0.3s ease;
 }
 .nav-toggle:hover {
-  color: #d1aaff;
+  color: #e8f5e0;
 }
 .nav-toggle svg {
   width: 24px;
@@ -53,18 +59,18 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: #bb99ff;
+  color: #c8d7a8;
   font-weight: 700;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 .nav-logo svg {
-  fill: #bb99ff;
+  fill: #c8d7a8;
   width: 32px;
   height: 32px;
 }
 .nav-logo:hover {
-  color: #d1aaff;
+  color: #e8f5e0;
 }
 
 .nav-links {
@@ -75,7 +81,8 @@ body {
   user-select: none;
 }
 .nav-link {
-  color: #a08eff;
+  /* Diubah ke warna tautan hijau pudar */
+  color: #a5b583;
   text-decoration: none;
   position: relative;
   padding-bottom: 4px;
@@ -84,10 +91,10 @@ body {
 }
 .nav-link:hover,
 .nav-link:focus {
-  color: #c3afff;
+  color: #c8d7a8;
 }
 .nav-link.active {
-  color: #d1aaff;
+  color: #e8f5e0;
 }
 .nav-link.active::after {
   content: "";
@@ -96,12 +103,14 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #a569ff, #c59eff);
+  /* Diubah ke gradien hijau-ke-kuning */
+  background: linear-gradient(90deg, #8bc34a, #cddc39);
   border-radius: 2px;
 }
 
 .badge {
-  background-color: #7041ff;
+  /* Diubah ke aksen hijau */
+  background-color: #8bc34a;
   color: white;
   border-radius: 9999px;
   font-size: 0.7rem;
@@ -123,7 +132,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
-  color: #bb99ff;
+  color: #c8d7a8;
   padding: 0;
   width: 28px;
   height: 28px;
@@ -135,7 +144,7 @@ body {
 
 .icon-button:hover,
 .icon-button:focus {
-  color: #d1aaff;
+  color: #e8f5e0;
 }
 
 .profile-button img {
@@ -148,7 +157,8 @@ body {
 }
 .profile-button:hover img,
 .profile-button:focus img {
-  box-shadow: 0 0 8px #c59eff, 0 0 15px #d1aaff;
+  /* Diubah ke bayangan kuning/hijau */
+  box-shadow: 0 0 8px #cddc39, 0 0 15px #e8f5e0;
 }
 
 /* === CONTRIBUTORS === */
@@ -164,11 +174,13 @@ body {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  color: #a569ff;
+  /* Diubah ke aksen hijau cerah */
+  color: #a2d24c;
+  /* Diubah ke bayangan teks hijau/kuning */
   text-shadow:
-    0 0 5px #b684ff,
-    0 0 10px #9f7eff,
-    0 0 20px #8b63ff;
+    0 0 5px #a2d24c,
+    0 0 10px #8bc34a,
+    0 0 20px #cddc39;
   user-select: none;
 }
 
@@ -183,13 +195,15 @@ body {
 }
 
 .contributor {
-  background: linear-gradient(145deg, #1c1359, #280c7a);
+  /* Diubah ke gradien latar belakang hijau tua */
+  background: linear-gradient(145deg, #323c28, #3b472e);
   border-radius: 12px;
   padding: 0.8rem;
   width: 110px;
+  /* Diubah ke bayangan hijau/kuning */
   box-shadow:
-    0 0 10px #a468ff66,
-    inset 0 0 15px #b383ffaa;
+    0 0 10px #8bc34a66,
+    inset 0 0 15px #cddc39aa;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
@@ -197,9 +211,10 @@ body {
 
 .contributor:hover {
   transform: translateY(-8px) scale(1.05);
+  /* Diubah ke bayangan hover hijau/kuning */
   box-shadow:
-    0 0 25px #b383ffaa,
-    inset 0 0 20px #c8a3ffcc;
+    0 0 25px #a2d24caa,
+    inset 0 0 20px #e8f5e0cc;
 }
 
 .contributor img {
@@ -207,24 +222,28 @@ body {
   height: 72px;
   border-radius: 50%;
   border: 2.5px solid transparent;
+  /* Diubah ke bayangan foto hijau/kuning */
   box-shadow:
-    0 0 8px #bb99ffcc inset,
-    0 0 15px #bb99ffcc;
+    0 0 8px #c8d7a8cc inset,
+    0 0 15px #c8d7a8cc;
   transition: border-color 0.3s ease;
 }
 
 .contributor:hover img {
-  border-color: #c59eff;
+  /* Diubah ke warna batas kuning */
+  border-color: #cddc39;
+  /* Diubah ke bayangan hover foto kuning/hijau */
   box-shadow:
-    0 0 15px #c59eff,
-    0 0 15px #d1aaff inset;
+    0 0 15px #cddc39,
+    0 0 15px #e8f5e0 inset;
 }
 
 .contributor a {
   margin-top: 0.7rem;
   display: inline-block;
   font-size: 0.95rem;
-  color: #c6b5ff;
+  /* Diubah ke warna teks kuning/hijau pucat */
+  color: #e8f5e0;
   text-decoration: none;
   font-weight: 600;
   letter-spacing: 0.05em;
@@ -233,8 +252,10 @@ body {
 }
 
 .contributor a:hover {
-  color: #d1aaff;
+  /* Diubah ke warna hover kuning/hijau cerah */
+  color: #f0f5d8;
+  /* Diubah ke bayangan teks kuning */
   text-shadow:
-    0 0 6px #bb99ff,
-    0 0 10px #bb99ff;
+    0 0 6px #cddc39,
+    0 0 10px #cddc39;
 }

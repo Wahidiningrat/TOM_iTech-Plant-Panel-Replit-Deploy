@@ -7,65 +7,77 @@
   <link rel="stylesheet" href="setting.css" />
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>Green House IoT Settings</h1>
-      <input type="search" placeholder="Search settings..." class="search-box" id="searchBox" />
-    </header>
-
-    <nav class="tabs" role="tablist" aria-label="Settings categories">
-      <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-sensors" id="tab-btn-sensors">Sensors</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-actuators" id="tab-btn-actuators">Actuators</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-network" id="tab-btn-network">Network</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="tab-notifications" id="tab-btn-notifications">Notifications</button>
+  <div class="dashboard-wrapper">
+    <nav class="sidebar" aria-label="Main dashboard navigation">
+      <div class="logo" aria-label="Dashboard logo">M</div>
+      <a href="dashbord.html" class="sidebar-button" title="Dashboard">🏠</a>
+      <button title="Settings" class="active">⚙️</button>
+      <a href="AIchat.html" class="sidebar-button" title="AI Chat">🤖</a>
+      <button class="add-btn" aria-label="Add new device">+</button>
     </nav>
 
-    <section id="tab-sensors" class="settings-list tab-content active" role="tabpanel" aria-labelledby="tab-btn-sensors">
-      <div class="setting-card" data-name="Temperature Sensor">
-        <h3>Temperature Sensor</h3>
-        <p>Manage temperature sensor settings</p>
-        <button class="configure-btn" data-device="temperatureSensor">Configure</button>
-      </div>
-      <div class="setting-card" data-name="Humidity Sensor">
-        <h3>Humidity Sensor</h3>
-        <p>Manage humidity sensor settings</p>
-        <button class="configure-btn" data-device="humiditySensor">Configure</button>
-      </div>
-      <div class="setting-card" data-name="Soil Moisture Sensor">
-        <h3>Soil Moisture Sensor</h3>
-        <p>Manage soil moisture sensor settings</p>
-        <button class="configure-btn" data-device="soilMoistureSensor">Configure</button>
-      </div>
-    </section>
+    <main class="main-content">
+      <div class="container">
+        <header>
+          <h1>Green House IoT Settings</h1>
+          <input type="search" placeholder="Search settings..." class="search-box" id="searchBox" />
+        </header>
 
-    <section id="tab-actuators" class="settings-list tab-content" role="tabpanel" aria-labelledby="tab-btn-actuators" hidden>
-      <div class="setting-card" data-name="Irrigation Pump">
-        <h3>Irrigation Pump</h3>
-        <p>Control your irrigation pump timing and duration</p>
-        <button class="configure-btn" data-device="irrigationPump">Configure</button>
-      </div>
-      <div class="setting-card" data-name="Ventilation Fan">
-        <h3>Ventilation Fan</h3>
-        <p>Set fan speed and schedules</p>
-        <button class="configure-btn" data-device="ventilationFan">Configure</button>
-      </div>
-    </section>
+        <nav class="tabs" role="tablist" aria-label="Settings categories">
+          <button class="tab active" role="tab" aria-selected="true" aria-controls="tab-sensors" id="tab-btn-sensors">Sensors</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-actuators" id="tab-btn-actuators">Actuators</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-network" id="tab-btn-network">Network</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tab-notifications" id="tab-btn-notifications">Notifications</button>
+        </nav>
 
-    <section id="tab-network" class="settings-list tab-content" role="tabpanel" aria-labelledby="tab-btn-network" hidden>
-      <div class="setting-card" data-name="Network Settings">
-        <h3>Network Settings</h3>
-        <p>Manage WiFi and device connection</p>
-        <button class="configure-btn" data-device="networkSettings">Configure</button>
-      </div>
-    </section>
+        <section id="tab-sensors" class="settings-list tab-content active" role="tabpanel" aria-labelledby="tab-btn-sensors">
+          <div class="setting-card" data-name="Temperature Sensor">
+            <h3>Temperature Sensor</h3>
+            <p>Manage temperature sensor settings</p>
+            <button class="configure-btn" data-device="temperatureSensor">Configure</button>
+          </div>
+          <div class="setting-card" data-name="Humidity Sensor">
+            <h3>Humidity Sensor</h3>
+            <p>Manage humidity sensor settings</p>
+            <button class="configure-btn" data-device="humiditySensor">Configure</button>
+          </div>
+          <div class="setting-card" data-name="Soil Moisture Sensor">
+            <h3>Soil Moisture Sensor</h3>
+            <p>Manage soil moisture sensor settings</p>
+            <button class="configure-btn" data-device="soilMoistureSensor">Configure</button>
+          </div>
+        </section>
 
-    <section id="tab-notifications" class="settings-list tab-content" role="tabpanel" aria-labelledby="tab-btn-notifications" hidden>
-      <div class="setting-card" data-name="Notification Alerts">
-        <h3>Notification Alerts</h3>
-        <p>Configure alerts for sensor anomalies</p>
-        <button class="configure-btn" data-device="notificationAlerts">Configure</button>
+        <section id="tab-actuators" class="settings-list tab-content" role="tabpanel" aria-labelledby="tab-btn-actuators" hidden>
+          <div class="setting-card" data-name="Irrigation Pump">
+            <h3>Irrigation Pump</h3>
+            <p>Control your irrigation pump timing and duration</p>
+            <button class="configure-btn" data-device="irrigationPump">Configure</button>
+          </div>
+          <div class="setting-card" data-name="Ventilation Fan">
+            <h3>Ventilation Fan</h3>
+            <p>Set fan speed and schedules</p>
+            <button class="configure-btn" data-device="ventilationFan">Configure</button>
+          </div>
+        </section>
+
+        <section id="tab-network" class="settings-list tab-content" role="tabpanel" aria-labelledby="tab-btn-network" hidden>
+          <div class="setting-card" data-name="Network Settings">
+            <h3>Network Settings</h3>
+            <p>Manage WiFi and device connection</p>
+            <button class="configure-btn" data-device="networkSettings">Configure</button>
+          </div>
+        </section>
+
+        <section id="tab-notifications" class="settings-list tab-content" role="tabpanel" aria-labelledby="tab-btn-notifications" hidden>
+          <div class="setting-card" data-name="Notification Alerts">
+            <h3>Notification Alerts</h3>
+            <p>Configure alerts for sensor anomalies</p>
+            <button class="configure-btn" data-device="notificationAlerts">Configure</button>
+          </div>
+        </section>
       </div>
-    </section>
+    </main>
   </div>
 
   <!-- Modal Popup -->
@@ -82,3 +94,4 @@
   <script src="setting.js"></script>
 </body>
 </html>
+)rawliteral";

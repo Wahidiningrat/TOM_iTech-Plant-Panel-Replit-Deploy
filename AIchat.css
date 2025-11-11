@@ -3,8 +3,8 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  /* Ubah dari gradien pink ke gradien ungu gelap futuristik */
-  background: linear-gradient(180deg, #1f2029 0%, #22232f 100%);
+  /* Ubah dari gradien pink ke gradien hijau ke kuning */
+  background: linear-gradient(180deg, #008000 0%, #FFFF00 100%);
   color: #c8cdd7; /* Teks terang untuk kontras gelap */
   display: flex;
   flex-direction: column;
@@ -15,14 +15,14 @@ header {
   display: flex;
   align-items: center;
   padding: 15px 25px;
-  /* Ubah border dan background ke ungu gelap */
-  border-bottom: 1px solid #4c46f1;
-  background-color: #2b2c3b;
+  /* Ubah border dan background ke hijau gelap */
+  border-bottom: 1px solid #32CD32;
+  background-color: #228B22;
   gap: 12px;
 }
 .logo-icon {
-  /* Ubah dari hitam ke ungu futuristik */
-  background-color: #4c46f1;
+  /* Ubah dari hitam ke hijau futuristik */
+  background-color: #32CD32;
   color: #fff;
   border-radius: 50%;
   width: 36px;
@@ -33,7 +33,7 @@ header {
   font-size: 20px;
   user-select: none;
   /* Tambah shadow untuk efek futuristik */
-  box-shadow: 0 4px 8px rgba(76, 70, 241, 0.5);
+  box-shadow: 0 4px 8px rgba(50, 205, 50, 0.5);
 }
 .logo-text {
   font-weight: 600;
@@ -52,8 +52,8 @@ main {
   position: relative;
 }
 .center-icon {
-  /* Ubah dari hitam ke ungu dengan gradien futuristik */
-  background: linear-gradient(135deg, #4c46f1 0%, #6a11cb 100%);
+  /* Ubah dari hitam ke hijau dengan gradien futuristik */
+  background: linear-gradient(135deg, #32CD32 0%, #90EE90 100%);
   width: 72px;
   height: 72px;
   border-radius: 20px;
@@ -65,7 +65,7 @@ main {
   color: white;
   user-select: none;
   /* Tingkatkan shadow untuk efek 3D */
-  box-shadow: 0 8px 16px rgba(76, 70, 241, 0.6);
+  box-shadow: 0 8px 16px rgba(50, 205, 50, 0.6);
 }
 h1 {
   margin: 0;
@@ -75,8 +75,8 @@ h1 {
 }
 h1 span {
   font-weight: 800;
-  /* Tambah aksen ungu */
-  color: #4c46f1;
+  /* Tambah aksen hijau */
+  color: #32CD32;
 }
 p.description {
   margin-top: 8px;
@@ -106,13 +106,13 @@ p.description {
   overflow: hidden;
 }
 .card {
-  /* Ubah dari putih ke gelap dengan border ungu */
-  background: #2b2c3b;
-  border: 1px solid #4c46f1;
+  /* Ubah dari putih ke gelap dengan border hijau */
+  background: #228B22;
+  border: 1px solid #32CD32;
   border-radius: 14px;
   padding: 18px 14px;
   /* Shadow futuristik */
-  box-shadow: 0 4px 12px rgba(76, 70, 241, 0.3);
+  box-shadow: 0 4px 12px rgba(50, 205, 50, 0.3);
   width: 180px;
   cursor: pointer;
   transition: box-shadow 0.25s ease, transform 0.25s ease;
@@ -122,17 +122,17 @@ p.description {
 }
 .card:hover {
   /* Tingkatkan efek hover */
-  box-shadow: 0 8px 20px rgba(76, 70, 241, 0.5);
+  box-shadow: 0 8px 20px rgba(50, 205, 50, 0.5);
   transform: translateY(-2px);
 }
 .card.highlighted {
-  /* Aksen ungu lebih kuat */
-  background: linear-gradient(135deg, #2b2c3b 0%, #4c46f1 100%);
-  box-shadow: 0 8px 18px rgba(76, 70, 241, 0.6);
+  /* Aksen hijau lebih kuat */
+  background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+  box-shadow: 0 8px 18px rgba(50, 205, 50, 0.6);
 }
 .card-icon {
-  /* Ubah dari hitam ke ungu */
-  background-color: #4c46f1;
+  /* Ubah dari hitam ke hijau */
+  background-color: #32CD32;
   color: white;
   border-radius: 12px;
   width: 34px;
@@ -144,8 +144,8 @@ p.description {
   flex-shrink: 0;
 }
 .card.highlighted .card-icon {
-  /* Variasi ungu lebih gelap */
-  background-color: #6a11cb;
+  /* Variasi hijau lebih gelap */
+  background-color: #228B22;
 }
 .card-title {
   font-weight: 600;
@@ -162,12 +162,12 @@ p.description {
 /* Chat Area */
 #chat-container {
   flex-grow: 1;
-  /* Ubah dari putih ke gelap dengan border ungu */
-  background: #2b2c3b;
-  border: 1px solid #4c46f1;
+  /* Ubah dari putih ke gelap dengan border hijau */
+  background: #228B22;
+  border: 1px solid #32CD32;
   border-radius: 16px;
   /* Shadow futuristik */
-  box-shadow: 0 8px 16px rgba(76, 70, 241, 0.3);
+  box-shadow: 0 8px 16px rgba(50, 205, 50, 0.3);
   width: 100%;
   max-width: 600px;
   margin-top: 30px;
@@ -195,14 +195,14 @@ p.description {
   word-wrap: break-word;
 }
 .message.ai {
-  /* Ubah dari pink ke gradien ungu */
-  background: linear-gradient(135deg, #4c46f1 0%, #6a11cb 100%);
+  /* Ubah dari pink ke gradien hijau */
+  background: linear-gradient(135deg, #32CD32 0%, #90EE90 100%);
   align-self: flex-start;
   color: #fff;
 }
 .message.user {
-  /* Ubah dari pink ke gradien ungu gelap */
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  /* Ubah dari pink ke gradien hijau gelap */
+  background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
   color: white;
   align-self: flex-end;
 }
@@ -211,36 +211,36 @@ p.description {
 #input-area {
   display: flex;
   /* Ubah border dan background ke gelap */
-  border-top: 1px solid #4c46f1;
+  border-top: 1px solid #32CD32;
   padding: 12px 20px;
   gap: 12px;
-  background: #2b2c3b;
+  background: #228B22;
 }
 #input-area input {
   flex-grow: 1;
   padding: 10px 18px;
   border-radius: 28px;
-  /* Ubah border dan background ke ungu */
-  border: 1px solid #4c46f1;
+  /* Ubah border dan background ke hijau */
+  border: 1px solid #32CD32;
   font-size: 1rem;
   outline: none;
   font-weight: 500;
   color: #c8cdd7;
-  background: #1f2029;
+  background: #008000;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 #input-area input:focus {
-  border-color: #6a11cb;
+  border-color: #90EE90;
   /* Tambah glow futuristik */
-  box-shadow: 0 0 8px rgba(76, 70, 241, 0.5);
-  background: #22232f;
+  box-shadow: 0 0 8px rgba(50, 205, 50, 0.5);
+  background: #228B22;
 }
 #send-btn {
   height: 40px;
   padding: 0 20px;
   border-radius: 28px;
-  /* Ubah dari pink ke gradien ungu */
-  background: linear-gradient(90deg, #4c46f1 0%, #6a11cb 100%);
+  /* Ubah dari pink ke gradien hijau */
+  background: linear-gradient(90deg, #32CD32 0%, #90EE90 100%);
   border: none;
   color: white;
   font-weight: 600;
@@ -255,7 +255,7 @@ p.description {
 #send-btn:hover {
   opacity: 0.9;
   /* Tambah shadow */
-  box-shadow: 0 4px 8px rgba(76, 70, 241, 0.5);
+  box-shadow: 0 4px 8px rgba(50, 205, 50, 0.5);
 }
 
 /* Send arrow */
@@ -270,8 +270,8 @@ p.description {
   width: 6px;
 }
 #chat-messages::-webkit-scrollbar-thumb {
-  /* Ubah dari pink ke ungu */
-  background-color: #4c46f1;
+  /* Ubah dari pink ke hijau */
+  background-color: #32CD32;
   border-radius: 3px;
 }
 
@@ -283,4 +283,66 @@ p.description {
   #chat-container {
     max-width: 100%;
   }
+}
+
+/* Sidebar Navbar (seperti setting.html) */
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+.sidebar {
+  width: 70px;
+  background: linear-gradient(180deg, #228B22, #008000); /* Gradien hijau gelap */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 30px;
+  font-weight: 600;
+}
+.sidebar .logo {
+  font-size: 28px;
+  font-weight: 900;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-bottom: 25px;
+  cursor: default;
+}
+.sidebar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.sidebar button:hover {
+  opacity: 1;
+  color: #FFFF00; /* Kuning pada hover */
+}
+.sidebar .add-btn {
+  margin-top: auto;
+  background: linear-gradient(90deg, #FFFF00, #FFD700); /* Gradien kuning */
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: 900;
+  font-size: 24px;
+  box-shadow: 0 0 10px #FFFF00aa;
+}
+.main-content {
+  flex-grow: 1;
+  padding: 32px 30px 40px 30px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #228B22, #90EE90); /* Gradien hijau */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

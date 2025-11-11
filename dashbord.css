@@ -7,7 +7,7 @@
 html, body {
   height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1f2029;
+  background: linear-gradient(135deg, #008000, #FFFF00); /* Gradien hijau ke kuning sebagai background utama */
   color: #c8cdd7;
   user-select: none;
   overflow: hidden; /* disable scroll for demo */
@@ -18,12 +18,13 @@ html, body {
   display: flex;
   height: 100vh;
   width: 100vw;
+  background: linear-gradient(135deg, #228B22, #32CD32); /* Variasi gradien hijau untuk wrapper */
 }
 
 /* Sidebar */
 .sidebar {
   width: 70px;
-  background-color: #4c46f1;
+  background: linear-gradient(180deg, #228B22, #008000); /* Gradien hijau gelap ke gelap */
   color: white;
   display: flex;
   flex-direction: column;
@@ -51,10 +52,11 @@ html, body {
 }
 .sidebar button:hover {
   opacity: 1;
+  color: #FFFF00; /* Kuning pada hover */
 }
 .sidebar .add-btn {
   margin-top: auto;
-  background: #53e0bc;
+  background: linear-gradient(90deg, #FFFF00, #FFD700); /* Gradien kuning ke emas */
   width: 32px;
   height: 32px;
   border-radius: 6px;
@@ -64,7 +66,7 @@ html, body {
   color: black;
   font-weight: 900;
   font-size: 24px;
-  box-shadow: 0 0 10px #53e0bcaa;
+  box-shadow: 0 0 10px #FFFF00aa; /* Shadow kuning */
 }
 
 /* Main area */
@@ -75,12 +77,12 @@ html, body {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 24px;
   overflow-y: auto;
-  background-color: #22232f;
+  background: linear-gradient(135deg, #228B22, #90EE90); /* Gradien hijau gelap ke muda */
 }
 
 /* Cards */
 .card {
-  background-color: #2b2c3b;
+  background: linear-gradient(135deg, #2b2c3b, #228B22); /* Gradien gelap ke hijau */
   border-radius: 8px;
   padding: 20px 22px;
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.6);
@@ -112,21 +114,21 @@ html, body {
 .meter > div {
   height: 100%;
   border-radius: 8px 0 0 8px;
-  background: linear-gradient(90deg,#53e0bc,#4cd1a1);
+  background: linear-gradient(90deg, #32CD32, #90EE90); /* Hijau lime ke muda */
 }
 
 /* For different meters with color variation */
 .meter.light > div {
-  background: linear-gradient(90deg,#f2a365,#f08a5d);
+  background: linear-gradient(90deg, #FFFF00, #FFD700); /* Kuning ke emas */
 }
 .meter.temp > div {
-  background: linear-gradient(90deg,#ff5e62,#ff9966);
+  background: linear-gradient(90deg, #228B22, #32CD32); /* Hijau gelap ke lime */
 }
 .meter.voltage > div {
-  background: linear-gradient(90deg,#6a11cb,#2575fc);
+  background: linear-gradient(90deg, #008000, #228B22); /* Hijau gelap ke gelap */
 }
 .meter.ldr > div {
-  background: linear-gradient(90deg,#fc466b,#3f5efb);
+  background: linear-gradient(90deg, #90EE90, #FFFF00); /* Hijau muda ke kuning */
 }
 
 /* Percentage text */
@@ -134,7 +136,7 @@ html, body {
   margin-top: 6px;
   font-weight: 700;
   font-size: 0.9rem;
-  color: #53e0bc;
+  color: #32CD32; /* Hijau lime */
 }
 
 /* Line chart svg styling */
@@ -148,10 +150,10 @@ svg.line-chart polyline {
   stroke-linejoin: round;
 }
 svg.line-chart .data1 {
-  stroke: #53e0bc;
+  stroke: #32CD32; /* Hijau lime */
 }
 svg.line-chart .data2 {
-  stroke: #bf87ff;
+  stroke: #FFFF00; /* Kuning */
 }
 
 /* Table styles */
@@ -170,7 +172,7 @@ th, td {
   text-align: left;
 }
 th {
-  background-color: #393a53;
+  background: linear-gradient(90deg, #228B22, #008000); /* Gradien hijau */
   font-weight: 700;
   color: #c8cdd7;
 }

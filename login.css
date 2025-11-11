@@ -7,7 +7,8 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #605f70;
+  /* Latar belakang diubah ke hijau tua/zaitun */
+  background: #3c4230; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +20,8 @@ body {
   display: flex;
   width: 900px;
   max-width: 90vw;
-  background: #2c2937;
+  /* Warna latar belakang utama diubah ke hijau gelap */
+  background: #2b3123;
   border-radius: 12px;
   box-shadow: 0 16px 40px rgba(0,0,0,0.6);
   overflow: hidden;
@@ -29,14 +31,16 @@ body {
 .left-panel {
   position: relative;
   width: 45%;
-  background: linear-gradient(to bottom, #4b4293, #3c3960);
+  /* Gradien panel kiri diubah ke hijau */
+  background: linear-gradient(to bottom, #4f5a3f, #3b472e);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 24px;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
-  box-shadow: inset 0 0 150px rgba(75,66,147,0.7);
+  /* Bayangan dalam diubah ke hijau */
+  box-shadow: inset 0 0 150px rgba(79, 90, 63, 0.7);
 }
 
 .left-top {
@@ -79,6 +83,7 @@ body {
 .left-image {
   width: 100%;
   height: 320px;
+  /* Ganti gambar placeholder agar lebih sesuai dengan tema alami/hijau */
   background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
   border-radius: 8px;
   box-shadow: inset 0 0 50px rgba(0,0,0,0.6);
@@ -104,7 +109,8 @@ body {
   width: 24px;
   height: 3px;
   border-radius: 10px;
-  background: #7a758f7d;
+  /* Warna dot non-aktif diubah ke hijau pudar */
+  background: #a5b5837d;
   opacity: 0.6;
   transition: all 0.3s ease;
 }
@@ -123,7 +129,8 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  background: #252332;
+  /* Latar belakang panel kanan diubah ke hijau gelap */
+  background: #2a3123;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
@@ -139,13 +146,15 @@ body {
 .login-prompt {
   font-size: 14px;
   font-weight: 400;
-  color: #b1b0c2;
+  /* Warna teks prompt diubah ke hijau pudar */
+  color: #c8d7a8;
   margin-bottom: 32px;
   user-select: none;
 }
 
 .login-prompt a {
-  color: #8a83f0;
+  /* Warna tautan diubah ke hijau-kuning */
+  color: #8bc34a;
   text-decoration: none;
   cursor: pointer;
 }
@@ -169,7 +178,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"] {
   flex-grow: 1;
-  background: #333146;
+  /* Latar belakang input diubah ke warna gelap yang baru */
+  background: #3b472e;
   border: 1px solid transparent;
   border-radius: 8px;
   color: white;
@@ -183,13 +193,16 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus {
-  border-color: #8a83f0;
-  background: #3b3956;
+  /* Batas fokus diubah ke hijau-kuning */
+  border-color: #8bc34a;
+  /* Latar belakang fokus diubah sedikit lebih terang */
+  background: #4f5a3f;
 }
 
 /* Placeholder styles */
 ::placeholder {
-  color: #9693b0;
+  /* Warna placeholder diubah ke hijau pudar */
+  color: #a5b583;
   font-weight: 400;
 }
 
@@ -205,7 +218,8 @@ input[type="password"]:focus {
   right: 16px;
   transform: translateY(-50%);
   cursor: pointer;
-  color: #7a758f7d;
+  /* Warna ikon diubah ke hijau pudar */
+  color: #a5b5837d;
   font-size: 18px;
   user-select: none;
 }
@@ -216,19 +230,22 @@ input[type="password"]:focus {
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: #b1b0c2;
+  /* Warna teks diubah ke hijau pudar */
+  color: #c8d7a8;
   user-select: none;
 }
 
 .checkbox-row input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #8a83f0;
+  /* Warna aksen checkbox diubah ke hijau-kuning */
+  accent-color: #8bc34a;
   cursor: pointer;
 }
 
 .checkbox-row a {
-  color: #8a83f0;
+  /* Warna tautan diubah ke hijau-kuning */
+  color: #8bc34a;
   text-decoration: none;
   cursor: pointer;
 }
@@ -242,9 +259,10 @@ button#create-account {
   width: 100%;
   padding: 14px 0;
   border: none;
-  background: #8a83f0;
+  /* Warna tombol diubah ke hijau-kuning */
+  background: #8bc34a;
   border-radius: 8px;
-  color: white;
+  color: #21261a; /* Warna teks gelap agar kontras */
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
@@ -254,7 +272,8 @@ button#create-account {
 }
 
 button#create-account:hover {
-  background: #726ddb;
+  /* Warna hover diubah ke kuning lebih cerah */
+  background: #cddc39;
 }
 
 /* Separator */
@@ -264,7 +283,8 @@ button#create-account:hover {
   gap: 12px;
   text-align: center;
   font-size: 14px;
-  color: #696975;
+  /* Warna teks diubah ke hijau pudar */
+  color: #969989;
   user-select: none;
   margin-top: 24px;
   margin-bottom: 20px;
@@ -275,7 +295,8 @@ button#create-account:hover {
   content: "";
   flex-grow: 1;
   height: 1.5px;
-  background: #383648;
+  /* Garis pemisah diubah ke hijau yang lebih gelap */
+  background: #4f5a3f;
   border-radius: 1.5px;
 }
 
@@ -288,7 +309,8 @@ button#create-account:hover {
 .social-button {
   flex-grow: 1;
   background: transparent;
-  border: 1.5px solid #4b4293;
+  /* Batas tombol sosial diubah ke hijau yang lebih terang */
+  border: 1.5px solid #4f5a3f;
   border-radius: 8px;
   color: white;
   font-size: 16px;
@@ -304,19 +326,48 @@ button#create-account:hover {
 }
 
 .social-button:hover {
-  background: #4b4293;
-  border-color: #6b5dfc;
+  /* Latar belakang hover diubah ke warna gradien utama */
+  background: #4f5a3f;
+  /* Warna batas hover diubah ke kuning */
+  border-color: #cddc39;
 }
 
-/* Google icon */
+/* Google icon - warna tetap biru, tapi kontras dengan latar belakang baru */
 .google-icon {
   width: 18px;
   height: 18px;
 }
 
-/* Apple icon */
+/* Apple icon - warna tetap putih */
 .apple-icon {
   width: 18px;
   height: 18px;
   fill: white;
+}
+
+/* Media Query untuk tata letak yang lebih baik di perangkat kecil */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    height: 100vh;
+    box-shadow: none;
+  }
+  
+  .left-panel {
+    display: none; /* Sembunyikan panel gambar di perangkat mobile */
+  }
+
+  .right-panel {
+    width: 100%;
+    padding: 32px 24px;
+    border-radius: 0;
+  }
+
+  .name-row {
+    flex-direction: column;
+    gap: 12px;
+  }
 }

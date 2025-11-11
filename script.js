@@ -1,5 +1,8 @@
-// === Konfigurasi OpenAI API ===
-const OPENAI_API_KEY = "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";
+// === Konfigurasi Gemini API ===
+// PENTING: Untuk penggunaan dalam platform Canvas, biarkan nilai ini kosong.
+// Kunci API akan disediakan secara otomatis saat runtime.
+const GEMINI_API_KEY = "AIzaSyAXHlWtD4FluVjN1n3-nYzCr-ed46F6jiQ";
+const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent";
 
 // Elemen DOM
 const cardsEl = document.getElementById("cards");
@@ -18,50 +21,73 @@ function addMessage(text, sender) {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-// Fungsi panggil OpenAI API (Chat Completion)
-async function askOpenAI(question) {
+// Fungsi panggil Gemini API dengan Exponential Backoff
+async function askGemini(question, maxRetries = 5) {
   addMessage(question, "user");
 
   // Tampilkan pesan loading sementara menunggu respons
   const loadingMsg = document.createElement("div");
   loadingMsg.className = "message ai";
-  loadingMsg.textContent = "Thinking...";
+  loadingMsg.textContent = "Berpikir...";
   chatMessages.appendChild(loadingMsg);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 
-  try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + OPENAI_API_KEY,
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [
-          { "role": "system", "content": "You are a helpful assistant called SayHalo." },
-          { "role": "user", "content": question }
-        ],
-        max_tokens: 700,
-        temperature: 0.7,
-        n: 1,
-        stop: null,
-      }),
-    });
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const payload = {
+        contents: [{ parts: [{ text: question }] }],
+        systemInstruction: {
+            parts: [{ text: "Anda adalah asisten yang membantu dan ramah bernama SayHalo. Jawablah pertanyaan pengguna dengan jelas dan ringkas." }]
+        },
+        // Contoh penggunaan Google Search Grounding. Hapus baris di bawah jika tidak diperlukan.
+        // tools: [{ "google_search": {} }],
+      };
 
-    const data = await response.json();
-    chatMessages.removeChild(loadingMsg);
+      const url = `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`;
 
-    if (data.error) {
-      addMessage("Error: " + data.error.message, "ai");
-      return;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      // Jika respons OK, keluar dari loop retry
+      if (response.ok) {
+        const data = await response.json();
+        chatMessages.removeChild(loadingMsg);
+
+        const candidate = data.candidates?.[0];
+        const answer = candidate?.content?.parts?.[0]?.text?.trim();
+
+        if (answer) {
+            addMessage(answer, "ai");
+        } else {
+            addMessage("Error: Respons API kosong atau tidak valid.", "ai");
+        }
+        return; 
+      } else if (response.status === 429 && attempt < maxRetries - 1) {
+        // Handle Rate Limiting (429 Too Many Requests)
+        const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+        // Lanjutkan ke iterasi berikutnya untuk retry
+      } else {
+        // Handle status error lainnya
+        const errorText = await response.text();
+        throw new Error(`Gagal memanggil API: ${response.status} - ${errorText}`);
+      }
+    } catch (err) {
+      if (attempt === maxRetries - 1) {
+        // Jika ini adalah percobaan terakhir, tampilkan error ke user
+        chatMessages.removeChild(loadingMsg);
+        addMessage(`Gagal mendapatkan respons setelah ${maxRetries} percobaan: ${err.message}`, "ai");
+        return;
+      }
+      // Untuk error lain, coba lagi setelah delay
+      const delay = Math.pow(2, attempt) * 1000 + Math.random() * 1000;
+      await new Promise(resolve => setTimeout(resolve, delay));
     }
-
-    const answer = data.choices[0].message.content.trim();
-    addMessage(answer, "ai");
-  } catch (err) {
-    chatMessages.removeChild(loadingMsg);
-    addMessage("Failed to get response: " + err.message, "ai");
   }
 }
 
@@ -77,7 +103,8 @@ cardsEl.addEventListener("click", (e) => {
   // Fokus ke input
   userInput.focus();
 
-  askOpenAI(question);
+  // Ganti ke fungsi Gemini
+  askGemini(question);
 });
 
 // Tangani submit form input user (chat)
@@ -87,7 +114,9 @@ inputForm.addEventListener("submit", (e) => {
   if (!text) return;
   // Nonaktifkan input saat mengirim
   userInput.disabled = true;
-  askOpenAI(text).finally(() => {
+  
+  // Ganti ke fungsi Gemini
+  askGemini(text).finally(() => {
     // Aktifkan kembali input setelah respons diterima/error
     userInput.disabled = false;
     userInput.value = "";

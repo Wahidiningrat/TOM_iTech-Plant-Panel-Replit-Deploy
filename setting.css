@@ -7,10 +7,75 @@
 }
 
 body {
-  background: #1a0033;
+  background: linear-gradient(135deg, #008000, #FFFF00); /* Gradien hijau ke kuning */
   color: #dcd6f7;
   min-height: 100vh;
-  padding: 2rem;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 70px;
+  background: linear-gradient(180deg, #228B22, #008000); /* Gradien hijau gelap */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 30px;
+  font-weight: 600;
+}
+.sidebar .logo {
+  font-size: 28px;
+  font-weight: 900;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin-bottom: 25px;
+  cursor: default;
+}
+.sidebar button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.sidebar button:hover {
+  opacity: 1;
+  color: #FFFF00; /* Kuning pada hover */
+}
+.sidebar .add-btn {
+  margin-top: auto;
+  background: linear-gradient(90deg, #FFFF00, #FFD700); /* Gradien kuning */
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: 900;
+  font-size: 24px;
+  box-shadow: 0 0 10px #FFFF00aa;
+}
+
+/* Main content */
+.main-content {
+  flex-grow: 1;
+  padding: 32px 30px 40px 30px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #228B22, #90EE90); /* Gradien hijau */
 }
 
 .container {
@@ -23,20 +88,20 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
-  border-bottom: 2px solid #5a27a2;
+  border-bottom: 2px solid #32CD32; /* Hijau lime */
   padding-bottom: 1rem;
 }
 
 h1 {
   font-weight: 700;
   font-size: 2rem;
-  color: #b68fff;
-  text-shadow: 0 0 10px #a366ff;
+  color: #FFFF00; /* Kuning */
+  text-shadow: 0 0 10px #32CD32; /* Shadow hijau */
 }
 
 .search-box {
-  background: #2e0059;
-  border: 1px solid #5a27a2;
+  background: #228B22; /* Hijau gelap */
+  border: 1px solid #32CD32; /* Hijau lime */
   border-radius: 5px;
   padding: 0.5rem 1rem;
   color: #dcd6f7;
@@ -46,8 +111,8 @@ h1 {
 
 .search-box:focus {
   outline: none;
-  border-color: #a366ff;
-  box-shadow: 0 0 8px #a366ff;
+  border-color: #FFFF00; /* Kuning */
+  box-shadow: 0 0 8px #FFFF00;
 }
 
 /* Tabs */
@@ -58,27 +123,27 @@ h1 {
 }
 
 .tab {
-  background: #2e0059;
+  background: #228B22; /* Hijau gelap */
   border: none;
   padding: 0.7rem 1.5rem;
   border-radius: 8px;
-  color: #b68fff;
+  color: #90EE90; /* Hijau muda */
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 0 5px #4b1a8f;
+  box-shadow: 0 0 5px #32CD32; /* Shadow hijau */
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .tab:hover {
-  background: #551a99;
+  background: #32CD32; /* Hijau lime */
   color: #fff;
-  box-shadow: 0 0 10px #a366ff;
+  box-shadow: 0 0 10px #FFFF00; /* Shadow kuning */
 }
 
 .tab.active {
-  background: #9a5eff;
-  color: #fff;
-  box-shadow: 0 0 15px #b68fff;
+  background: #FFFF00; /* Kuning */
+  color: #228B22; /* Hijau gelap */
+  box-shadow: 0 0 15px #FFD700; /* Shadow emas */
 }
 
 /* Settings cards */
@@ -89,11 +154,11 @@ h1 {
 }
 
 .setting-card {
-  background: #2e0059;
-  border: 1px solid #5a27a2;
+  background: linear-gradient(135deg, #2b2c3b, #228B22); /* Gradien gelap ke hijau */
+  border: 1px solid #32CD32; /* Hijau lime */
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 0 8px #5a27a2;
+  box-shadow: 0 0 8px #32CD32; /* Shadow hijau */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -102,36 +167,36 @@ h1 {
 
 .setting-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px #9a5eff;
+  box-shadow: 0 0 15px #FFFF00; /* Shadow kuning */
 }
 
 .setting-card h3 {
   margin-bottom: 0.5rem;
-  color: #cfc3ff;
+  color: #90EE90; /* Hijau muda */
 }
 
 .setting-card p {
   font-size: 0.9rem;
-  color: #b3aaff;
+  color: #c8cdd7;
   margin-bottom: 1rem;
   flex-grow: 1;
 }
 
 .setting-card button {
-  background: #9a5eff;
+  background: linear-gradient(90deg, #32CD32, #90EE90); /* Gradien hijau */
   border: none;
   color: #fff;
   padding: 0.5rem 1.2rem;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 0 8px #b68fff;
+  box-shadow: 0 0 8px #32CD32; /* Shadow hijau */
   transition: background-color 0.3s ease;
 }
 
 .setting-card button:hover {
-  background: #b68fff;
-  box-shadow: 0 0 12px #dfcfff;
+  background: linear-gradient(90deg, #FFFF00, #FFD700); /* Gradien kuning */
+  box-shadow: 0 0 12px #FFFF00; /* Shadow kuning */
 }
 
 /* Tab Content */
@@ -143,7 +208,6 @@ h1 {
 }
 
 /* Modal styles */
-
 .modal {
   display: none;
   position: fixed;
@@ -151,7 +215,7 @@ h1 {
   left: 0; top: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(26, 0, 51, 0.8);
+  background: rgba(0, 128, 0, 0.8); /* Hijau gelap transparan */
   backdrop-filter: blur(5px);
   justify-content: center;
   align-items: center;
@@ -163,13 +227,13 @@ h1 {
 }
 
 .modal-content {
-  background: #2e0059;
-  border: 2px solid #9a5eff;
+  background: linear-gradient(135deg, #228B22, #32CD32); /* Gradien hijau */
+  border: 2px solid #FFFF00; /* Kuning */
   border-radius: 15px;
   width: 100%;
   max-width: 500px;
   padding: 2rem;
-  box-shadow: 0 0 25px #b68fff;
+  box-shadow: 0 0 25px #FFFF00; /* Shadow kuning */
   position: relative;
   color: #e7defc;
 }
@@ -187,20 +251,20 @@ h1 {
 }
 
 .modal-close:hover {
-  color: #b68fff;
+  color: #FFFF00; /* Kuning */
 }
 
 .modal-content h2 {
   margin-bottom: 1.5rem;
   text-align: center;
-  color: #b68fff;
+  color: #FFFF00; /* Kuning */
 }
 
 form label {
   display: block;
   margin-bottom: 0.25rem;
   font-weight: 600;
-  color: #cfc3ff;
+  color: #90EE90; /* Hijau muda */
 }
 
 form input[type="text"],
@@ -210,8 +274,8 @@ form select {
   width: 100%;
   padding: 0.4rem 0.6rem;
   border-radius: 6px;
-  border: 1px solid #5a27a2;
-  background: #250042;
+  border: 1px solid #32CD32; /* Hijau lime */
+  background: #228B22; /* Hijau gelap */
   color: #dcd6f7;
   margin-bottom: 1rem;
   font-size: 1rem;
@@ -224,7 +288,7 @@ form input[type="checkbox"] {
 }
 
 form button.save-btn {
-  background: #9a5eff;
+  background: linear-gradient(90deg, #32CD32, #90EE90); /* Gradien hijau */
   border: none;
   color: white;
   padding: 0.6rem 1.5rem;
@@ -237,5 +301,5 @@ form button.save-btn {
 }
 
 form button.save-btn:hover {
-  background: #b68fff;
+  background: linear-gradient(90deg, #FFFF00, #FFD700); /* Gradien kuning */
 }
