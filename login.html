@@ -26,10 +26,10 @@
     <section class="right-panel" aria-label="Account creation form">
       <h2>Create an account</h2>
       <p class="login-prompt">
-        Already have an account? <a href="#" tabindex="0">Log in</a>
+        Already have an account? <a href="loginpage.html" tabindex="0">Log in</a>
       </p>
 
-      <form id="createAccountForm" novalidate>
+      <form id="createAccountForm" action="login.php" method="POST">
         <div class="name-row">
           <input type="text" id="firstName" placeholder="First name" autocomplete="given-name" required value="Fletcher" />
           <input type="text" id="lastName" placeholder="Last name" autocomplete="family-name" />

@@ -9,30 +9,93 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   />
   <style>
+    /* Navbar Styles */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 5px 7px rgb(0 0 0 / 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+
+    .navbar-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: center; /* Centers the menu */
+      align-items: center;
+    }
+
+    /* Logo removed - no .navbar-logo styles */
+
+    .navbar-menu {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-link {
+      color: #444;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 8px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(to right, #4CAF50, #FFEB3B);
+      border-radius: 2px;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #4CAF50;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 60%;
+      left: 20%;
+    }
+
+    .nav-link.active {
+      color: #4CAF50;
+    }
+
+    /* Body and Container Styles */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #008000, #FFFF00); /* Gradien hijau ke kuning */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
+      background-image: url('https://images.unsplash.com/uploads/1411901100260f56b39b9/ab70b250?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JlZW5ob3VzZXxlbnwwfHwwfHx8MA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
       color: #222;
+      padding-top: 0;
     }
 
     .container {
-      background: #fff;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: 20px;
       padding: 40px 60px;
       max-width: 1100px;
+      margin: 40px auto;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       text-align: center;
     }
 
     .subtitle {
-      background: #f0f8f0; /* Hijau sangat muda */
-      color: #32CD32; /* Hijau lime */
+      background: #f0f8f0;
+      color: #32CD32;
       display: inline-block;
       padding: 5px 15px;
       border-radius: 20px;
@@ -72,8 +135,8 @@
 
     .feature-icon {
       font-size: 28px;
-      color: #90EE90; /* Hijau muda */
-      background: #f0f8f0; /* Hijau sangat muda */
+      color: #90EE90;
+      background: #f0f8f0;
       padding: 15px;
       border-radius: 50%;
       margin-bottom: 12px;
@@ -83,8 +146,8 @@
     .feature-item:hover .feature-icon,
     .feature-item.active .feature-icon {
       color: #fff;
-      background: #228B22; /* Hijau gelap */
-      box-shadow: 0 0 18px #228B22; /* Shadow hijau gelap */
+      background: linear-gradient(to right, #4CAF50, #FFEB3B);
+      box-shadow: 0 0 18px #228B22;
     }
 
     .feature-text {
@@ -107,6 +170,19 @@
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-menu">
+        <a href="Features.html" class="nav-link active">Features</a>
+        <a href="index.html" class="nav-link">home</a>
+        <a href="credit.html" class="nav-link">Contributors</a>
+        <a href="overview.html" class="nav-link">Overview</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
   <div class="container">
     <div class="subtitle">Our Main Features</div>
     <h2>Our Breakthrough Features</h2>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent Login</title>
+  <link rel="stylesheet" href="loginpage.css" /> 
+</head>
+<body>
+  <div class="login-container" role="main" aria-label="Agent Login Form">
+    <h1>Agent Login</h1>
+    <p class="description">Hey, Enter your details to get sign in to your account</p>
+
+    <form autocomplete="off">
+      <div class="input-wrapper">
+        <input type="text" id="email" name="email" placeholder="Enter Email / Phone No" required aria-required="true" aria-label="Email or Phone number" />
+      </div>
+
+      <div class="input-wrapper">
+        <input type="password" id="passcode" name="passcode" placeholder="Passcode" required aria-required="true" aria-label="Passcode" />
+        <button type="button" class="toggle-passcode" aria-pressed="false" aria-label="Toggle passcode visibility">Hide</button>
+      </div>
+
+      <div class="help-text">Having trouble in sign in?</div>
+
+      <button type="submit" class="sign-in">Sign in</button>
+    </form>
+
+    <div class="divider">Or Sign in with</div>
+  </div>
+
+  <script src="loginpage.js"></script>
+</body>
+</html>

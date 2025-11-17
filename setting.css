@@ -7,7 +7,13 @@
 }
 
 body {
-  background: linear-gradient(135deg, #008000, #FFFF00); /* Gradien hijau ke kuning */
+  background: #008000; /* Fallback hijau gelap jika gambar gagal */
+  background-image: url('https://images.pexels.com/photos/1508934/pexels-photo-1508934.jpeg?cs=srgb&dl=pexels-minan1398-1508934.jpg&fm=jpg'); /* Gambar background baru */
+  background-size: cover; /* Menutupi seluruh viewport */
+  background-position: center; /* Posisi tengah */
+  background-repeat: no-repeat; /* Tidak diulang */
+  background-attachment: fixed; /* Tetap saat scroll, ubah ke 'scroll' jika tidak diinginkan */
+  background-color: rgba(0, 128, 0, 0.3); /* Overlay semi-transparan untuk kontras teks */
   color: #dcd6f7;
   min-height: 100vh;
   display: flex;
@@ -75,7 +81,7 @@ body {
   flex-grow: 1;
   padding: 32px 30px 40px 30px;
   overflow-y: auto;
-  background: linear-gradient(135deg, #228B22, #90EE90); /* Gradien hijau */
+  /* Background dihapus agar gambar di body terlihat */
 }
 
 .container {

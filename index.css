@@ -7,7 +7,12 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #008000; /* Hijau gelap sebagai base */
+  background: #008000; /* Hijau gelap sebagai fallback */
+  background-image: url('https://images.unsplash.com/uploads/1411901100260f56b39b9/ab70b250?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JlZW5ob3VzZXxlbnwwfHwwfHx8MA%3D%3D'); /* Background image */
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* No tiling */
+  background-attachment: fixed; /* Optional: fixed for parallax effect, remove if not desired */
   color: #dddde3;
   min-height: 100vh;
   display: flex;
@@ -16,37 +21,6 @@ body {
   padding: 20px 40px 60px;
   overflow-x: hidden;
   position: relative;
-}
-
-/* Background grid pattern */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(0deg, transparent 24%, #228B22 25%, #228B22 26%, transparent 27%, transparent 74%, #228B22 75%, #228B22 76%, transparent 77%, transparent),
-    linear-gradient(90deg, transparent 24%, #228B22 25%, #228B22 26%, transparent 27%, transparent 74%, #228B22 75%, #228B22 76%, transparent 77%, transparent);
-  background-size: 3rem 3rem;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Large radial gradient behind content */
-body::before {
-  content: "";
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 160vw;
-  height: 160vw;
-  max-width: 1600px;
-  max-height: 1600px;
-  background:
-    radial-gradient(circle at center, #32CD32dd 6%, transparent 50%), /* Hijau lime */
-    repeating-radial-gradient(circle at center, transparent 0 58%, #FFFF0088 58% 64%); /* Kuning */
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: -1;
 }
 
 /* Header navbar */
@@ -233,4 +207,24 @@ p.subtitle {
   filter: invert(80%) sepia(20%) saturate(600%) hue-rotate(90deg); /* Sesuaikan hue ke hijau */
   opacity: 0.25;
   transition: opacity 0.3s ease;
+}
+
+/* --- STYLE UNTUK PROFILE PENGGUNA --- */
+.auth-buttons .user-profile {
+    /* Gunakan flex agar profile link sejajar dengan tombol get started */
+    display: flex; 
+    align-items: center;
+}
+
+.auth-buttons .user-profile .profile-link {
+    color: #FFFF00; /* Kuning terang untuk menonjol */
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: 9px 0; /* Padding agar sejajar dengan tombol */
+}
+
+.auth-buttons .user-profile .profile-link:hover {
+    color: #FFD700; /* Kuning emas */
 }

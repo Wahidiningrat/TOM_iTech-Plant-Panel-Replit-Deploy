@@ -12,28 +12,26 @@
   <div class="logo" aria-label="TOM_ITech logo" role="img" tabindex="0">
     <svg viewBox="0 0 64 52" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="64" height="52" rx="14" fill="url(#paint0_linear)"/>
-      <ellipse cx="32" cy="26" rx="22" ry="14" fill="#32CD32" /> <!-- Hijau lime -->
-      <ellipse cx="32" cy="26" rx="12" ry="8" fill="#90EE90" /> <!-- Hijau muda -->
-      <circle cx="32" cy="26" r="6" fill="#228B22" /> <!-- Hijau gelap -->
-      <defs>
+      <ellipse cx="32" cy="26" rx="22" ry="14" fill="#32CD32" /> <ellipse cx="32" cy="26" rx="12" ry="8" fill="#90EE90" /> <circle cx="32" cy="26" r="6" fill="#228B22" /> <defs>
         <linearGradient id="paint0_linear" x1="0" y1="0" x2="64" y2="52" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#FFFF00"/> <!-- Kuning -->
-          <stop offset="1" stop-color="#008000"/> <!-- Hijau gelap -->
-        </linearGradient>
+          <stop stop-color="#FFFF00"/> <stop offset="1" stop-color="#008000"/> </linearGradient>
       </defs>
     </svg>
   </div>
 
   <nav aria-label="Primary navigation">
-    <a href="#" tabindex="0">Overview</a>
+    <a href="overview.html" tabindex="0">Overview</a>
     <a href="Features.html" tabindex="0">Features</a>
-    <a href="#" tabindex="0">Our Effort</a>
+    <a href="index.html" tabindex="0">home</a>
     <a href="credit.html" tabindex="0">Contributors</a>
   </nav>
 
   <div class="auth-buttons">
-    <a href="login.html" class="login" tabindex="0">Login</a>
-    <a href="#" class="btn-getstarted">Get Started</a>
+    <a href="loginpage.html" class="login" id="login-link" tabindex="0">Login</a>
+    <div class="user-profile" id="user-profile" style="display: none;">
+      <a href="userprofile.html" class="profile-link" tabindex="0">Profile Pengguna</a>
+    </div>
+    <a href="dashbord.html" class="btn-getstarted">Get Started</a>
   </div>
 </header>
 
@@ -41,14 +39,9 @@
   <div class="main-logo" aria-label="TOM_ITech central logo" role="img" tabindex="0">
     <svg viewBox="0 0 64 52" fill="none" xmlns="http://www.w3.org/2000/svg" >
       <rect width="64" height="52" rx="14" fill="url(#paint0_linear_main)" />
-      <ellipse cx="32" cy="26" rx="22" ry="14" fill="#228B22" /> <!-- Hijau gelap -->
-      <ellipse cx="32" cy="26" rx="12" ry="8" fill="#FFFF00" /> <!-- Kuning -->
-      <circle cx="32" cy="26" r="6" fill="#32CD32" /> <!-- Hijau lime -->
-      <defs>
+      <ellipse cx="32" cy="26" rx="22" ry="14" fill="#228B22" /> <ellipse cx="32" cy="26" rx="12" ry="8" fill="#FFFF00" /> <circle cx="32" cy="26" r="6" fill="#32CD32" /> <defs>
         <linearGradient id="paint0_linear_main" x1="0" y1="0" x2="64" y2="52" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#90EE90"/> <!-- Hijau muda -->
-          <stop offset="1" stop-color="#008000"/> <!-- Hijau gelap -->
-        </linearGradient>
+          <stop stop-color="#90EE90"/> <stop offset="1" stop-color="#008000"/> </linearGradient>
       </defs>
     </svg>
   </div>
@@ -78,5 +71,6 @@
   <img src="https://cdn.worldvectorlogo.com/logos/dribbble-icon-logo.svg" alt="Dribbble" />
 </section>
 
+<script src="index.js"></script>
 </body>
 </html>

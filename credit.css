@@ -1,8 +1,13 @@
 /* RESET & FONT */
 body {
-  /* Diubah ke latar belakang hijau tua/zaitun */
+  /* Background dengan gambar Unsplash */
+  background-image: url('https://images.unsplash.com/uploads/1411901100260f56b39b9/ab70b250?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JlZW5ob3VzZXxlbnwwfHwwfHx8MA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Fallback hijau tua/zaitun */
   background-color: #2a311f;
-  /* Diubah ke warna teks kuning/hijau pucat */
+  /* Teks kuning/hijau pucat */
   color: #e8f5e0;
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,16 +20,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* Diubah ke latar belakang navbar hijau tua */
+  /* Background navbar hijau tua */
   background-color: #21261a;
   padding: 0 1.5rem;
   height: 56px;
-  /* Diubah ke bayangan hijau */
+  /* Bayangan hijau */
   box-shadow: 0 0 20px #8bc34a44 inset;
-  /* Diubah ke batas bawah hijau tua */
+  /* Batas bawah hijau tua */
   border-bottom: 1px solid #4f5a3f;
   font-size: 0.9rem;
-  /* Diubah ke warna teks navbar hijau muda */
+  /* Teks navbar hijau muda */
   color: #c8d7a8;
   user-select: none;
   position: sticky;
@@ -81,7 +86,7 @@ body {
   user-select: none;
 }
 .nav-link {
-  /* Diubah ke warna tautan hijau pudar */
+  /* Warna tautan hijau pudar */
   color: #a5b583;
   text-decoration: none;
   position: relative;
@@ -103,13 +108,13 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  /* Diubah ke gradien hijau-ke-kuning */
+  /* Gradasi hijau-ke-kuning */
   background: linear-gradient(90deg, #8bc34a, #cddc39);
   border-radius: 2px;
 }
 
 .badge {
-  /* Diubah ke aksen hijau */
+  /* Aksen hijau */
   background-color: #8bc34a;
   color: white;
   border-radius: 9999px;
@@ -157,7 +162,7 @@ body {
 }
 .profile-button:hover img,
 .profile-button:focus img {
-  /* Diubah ke bayangan kuning/hijau */
+  /* Bayangan kuning/hijau */
   box-shadow: 0 0 8px #cddc39, 0 0 15px #e8f5e0;
 }
 
@@ -168,15 +173,18 @@ body {
   margin: 2rem auto 4rem;
   padding: 0 1rem;
   text-align: center;
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparan untuk readability */
+  border-radius: 12px;
+  padding: 2rem;
 }
 
 .contributors h2 {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
-  /* Diubah ke aksen hijau cerah */
+  /* Aksen hijau cerah */
   color: #a2d24c;
-  /* Diubah ke bayangan teks hijau/kuning */
+  /* Bayangan teks hijau/kuning */
   text-shadow:
     0 0 5px #a2d24c,
     0 0 10px #8bc34a,
@@ -195,12 +203,12 @@ body {
 }
 
 .contributor {
-  /* Diubah ke gradien latar belakang hijau tua */
+  /* Gradasi latar belakang hijau tua */
   background: linear-gradient(145deg, #323c28, #3b472e);
   border-radius: 12px;
   padding: 0.8rem;
   width: 110px;
-  /* Diubah ke bayangan hijau/kuning */
+  /* Bayangan hijau/kuning */
   box-shadow:
     0 0 10px #8bc34a66,
     inset 0 0 15px #cddc39aa;
@@ -211,7 +219,7 @@ body {
 
 .contributor:hover {
   transform: translateY(-8px) scale(1.05);
-  /* Diubah ke bayangan hover hijau/kuning */
+  /* Bayangan hover hijau/kuning */
   box-shadow:
     0 0 25px #a2d24caa,
     inset 0 0 20px #e8f5e0cc;
@@ -222,7 +230,7 @@ body {
   height: 72px;
   border-radius: 50%;
   border: 2.5px solid transparent;
-  /* Diubah ke bayangan foto hijau/kuning */
+  /* Bayangan foto hijau/kuning */
   box-shadow:
     0 0 8px #c8d7a8cc inset,
     0 0 15px #c8d7a8cc;
@@ -230,9 +238,9 @@ body {
 }
 
 .contributor:hover img {
-  /* Diubah ke warna batas kuning */
+  /* Warna batas kuning */
   border-color: #cddc39;
-  /* Diubah ke bayangan hover foto kuning/hijau */
+  /* Bayangan hover foto kuning/hijau */
   box-shadow:
     0 0 15px #cddc39,
     0 0 15px #e8f5e0 inset;
@@ -242,7 +250,7 @@ body {
   margin-top: 0.7rem;
   display: inline-block;
   font-size: 0.95rem;
-  /* Diubah ke warna teks kuning/hijau pucat */
+  /* Warna teks kuning/hijau pucat */
   color: #e8f5e0;
   text-decoration: none;
   font-weight: 600;
@@ -252,9 +260,9 @@ body {
 }
 
 .contributor a:hover {
-  /* Diubah ke warna hover kuning/hijau cerah */
+  /* Warna hover kuning/hijau cerah */
   color: #f0f5d8;
-  /* Diubah ke bayangan teks kuning */
+  /* Bayangan teks kuning */
   text-shadow:
     0 0 6px #cddc39,
     0 0 10px #cddc39;
