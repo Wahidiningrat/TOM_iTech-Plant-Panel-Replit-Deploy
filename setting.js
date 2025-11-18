@@ -1,3 +1,25 @@
+const SETTINGS_STORAGE_KEY = 'tom_itech_settings';
+
+function loadAllSettings() {
+    const saved = localStorage.getItem(SETTINGS_STORAGE_KEY);
+    return saved ? JSON.parse(saved) : {};
+}
+
+function saveAllSettings(settings) {
+    localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+}
+
+function getDeviceSettings(deviceKey) {
+    const allSettings = loadAllSettings();
+    return allSettings[deviceKey] || null;
+}
+
+function saveDeviceSettings(deviceKey, settings) {
+    const allSettings = loadAllSettings();
+    allSettings[deviceKey] = settings;
+    saveAllSettings(allSettings);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const tabs = document.querySelectorAll('.tab');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -6,11 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalTitle = document.getElementById('modalTitle');
   const settingsForm = document.getElementById('settingsForm');
   const modalCloseBtn = modal.querySelector('.modal-close');
+  const addBtn = document.querySelector('.add-btn');
 
-  // Tab switching logic
+  if (addBtn) {
+    addBtn.addEventListener('click', () => {
+      const esp32IP = localStorage.getItem('esp32_ip') || '';
+      const newIP = prompt('Masukkan IP Address ESP32 Anda (contoh: 192.168.1.100):', esp32IP);
+      if (newIP !== null && newIP.trim() !== '') {
+        localStorage.setItem('esp32_ip', newIP.trim());
+        alert('IP ESP32 berhasil disimpan: ' + newIP.trim());
+      }
+    });
+  }
+
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      // Remove active from all tabs and hide content
       tabs.forEach(t => {
         t.classList.remove('active');
         t.setAttribute('aria-selected', 'false');
@@ -20,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
         c.hidden = true;
       });
 
-      // Activate selected tab and show content
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
       const panelId = tab.getAttribute('aria-controls');
@@ -32,12 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Device settings definition (form fields)
   const deviceSettings = {
     temperatureSensor: {
       title: "Temperature Sensor Settings",
       fields: [
-        {label: "Temperature Threshold (°C)", type: "number", name: "tempThreshold", min: -20, max: 50, step: 0.1, value: 25},
+        {label: "Min Temperature Alert (°C)", type: "number", name: "minTempAlert", min: -20, max: 50, step: 0.1, value: 15},
+        {label: "Max Temperature Alert (°C)", type: "number", name: "maxTempAlert", min: -20, max: 50, step: 0.1, value: 35},
         {label: "Sampling Interval (seconds)", type: "number", name: "samplingInterval", min: 5, max: 3600, value: 60},
         {label: "Enable Alerts", type: "checkbox", name: "enableAlerts", checked: true}
       ]
@@ -45,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
     humiditySensor: {
       title: "Humidity Sensor Settings",
       fields: [
-        {label: "Humidity Threshold (%)", type: "number", name: "humidityThreshold", min: 0, max: 100, step: 1, value: 60},
+        {label: "Min Humidity Alert (%)", type: "number", name: "minHumidityAlert", min: 0, max: 100, step: 1, value: 30},
+        {label: "Max Humidity Alert (%)", type: "number", name: "maxHumidityAlert", min: 0, max: 100, step: 1, value: 80},
         {label: "Sampling Interval (seconds)", type: "number", name: "samplingInterval", min: 5, max: 3600, value: 80},
         {label: "Enable Alerts", type: "checkbox", name: "enableAlerts", checked: false}
       ]
@@ -53,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     soilMoistureSensor: {
       title: "Soil Moisture Sensor Settings",
       fields: [
-        {label: "Moisture Threshold (%)", type: "number", name: "moistureThreshold", min: 0, max: 100, step: 1, value: 40},
+        {label: "Min Moisture Alert (%)", type: "number", name: "minMoistureAlert", min: 0, max: 100, step: 1, value: 20},
+        {label: "Max Moisture Alert (%)", type: "number", name: "maxMoistureAlert", min: 0, max: 100, step: 1, value: 80},
         {label: "Sampling Interval (seconds)", type: "number", name: "samplingInterval", min: 5, max: 3600, value: 120},
         {label: "Enable Alerts", type: "checkbox", name: "enableAlerts", checked: true}
       ]
@@ -62,14 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "Irrigation Pump Settings",
       fields: [
         {label: "Pump Duration (minutes)", type: "number", name: "pumpDuration", min: 1, max: 60, value: 10},
+        {label: "Auto Irrigation Moisture Level (%)", type: "number", name: "autoIrrigationLevel", min: 0, max: 100, value: 30},
         {label: "Pump Start Time", type: "text", name: "pumpStartTime", placeholder: "HH:mm", value: "06:00"},
-        {label: "Enable Schedule", type: "checkbox", name: "enableSchedule", checked: true}
+        {label: "Enable Auto Mode", type: "checkbox", name: "enableAutoMode", checked: true}
       ]
     },
     ventilationFan: {
       title: "Ventilation Fan Settings",
       fields: [
         {label: "Fan Speed (%)", type: "number", name: "fanSpeed", min: 0, max: 100, value: 50},
+        {label: "Auto Fan Temp Trigger (°C)", type: "number", name: "autoFanTempTrigger", min: 20, max: 50, value: 30},
         {label: "Operating Hours", type: "text", name: "operatingHours", placeholder: "HH:mm-HH:mm", value: "08:00-18:00"},
         {label: "Enable Auto Mode", type: "checkbox", name: "enableAutoMode", checked: false}
       ]
@@ -77,9 +112,10 @@ document.addEventListener('DOMContentLoaded', () => {
     networkSettings: {
       title: "Network Settings",
       fields: [
+        {label: "ESP32 IP Address", type: "text", name: "esp32IP", placeholder: "192.168.1.100", value: ""},
         {label: "WiFi SSID", type: "text", name: "wifiSSID", value: "GreenHouse_WiFi"},
         {label: "WiFi Password", type: "password", name: "wifiPassword", value: ""},
-        {label: "DHCP Enabled", type: "checkbox", name: "dhcpEnabled", checked: true}
+        {label: "Auto-Refresh Interval (seconds)", type: "number", name: "refreshInterval", min: 1, max: 60, value: 5}
       ]
     },
     notificationAlerts: {
@@ -88,45 +124,56 @@ document.addEventListener('DOMContentLoaded', () => {
         {label: "Email Alerts", type: "checkbox", name: "emailAlerts", checked: true},
         {label: "SMS Alerts", type: "checkbox", name: "smsAlerts", checked: false},
         {label: "Push Notifications", type: "checkbox", name: "pushNotifications", checked: true},
-        {label: "Alert Threshold (minutes delay)", type: "number", name: "alertThreshold", min: 1, max: 60, value: 5}
+        {label: "Alert Sound", type: "checkbox", name: "alertSound", checked: true},
+        {label: "Alert Cooldown (minutes)", type: "number", name: "alertCooldown", min: 1, max: 60, value: 5}
       ]
     }
   };
 
-  // Open modal with form for device settings
   configureButtons.forEach(button => {
     button.addEventListener('click', () => {
       const deviceKey = button.getAttribute('data-device');
       if(!deviceSettings[deviceKey]) return;
 
-      // Clear previous form
       settingsForm.innerHTML = '';
-
-      // Set modal title
       modalTitle.textContent = deviceSettings[deviceKey].title;
 
-      // Generate form fields
+      const savedDeviceSettings = getDeviceSettings(deviceKey);
+
       deviceSettings[deviceKey].fields.forEach(field => {
         const label = document.createElement('label');
         label.setAttribute('for', field.name);
         label.textContent = field.label;
 
         let input;
+        let savedValue = savedDeviceSettings ? savedDeviceSettings[field.name] : undefined;
+
         if (field.type === 'checkbox') {
           input = document.createElement('input');
           input.type = 'checkbox';
           input.name = field.name;
           input.id = field.name;
-          if (field.checked) input.checked = true;
+          
+          if (savedValue !== undefined) {
+            input.checked = savedValue;
+          } else if (field.checked) {
+            input.checked = true;
+          }
 
-          label.prepend(input); // checkbox before label text
+          label.prepend(input);
           settingsForm.appendChild(label);
         } else {
           input = document.createElement('input');
           input.type = field.type;
           input.name = field.name;
           input.id = field.name;
-          if (field.value !== undefined) input.value = field.value;
+          
+          if (savedValue !== undefined) {
+            input.value = savedValue;
+          } else if (field.value !== undefined) {
+            input.value = field.value;
+          }
+          
           if (field.placeholder) input.placeholder = field.placeholder;
           if(field.min !== undefined) input.min = field.min;
           if(field.max !== undefined) input.max = field.max;
@@ -136,28 +183,24 @@ document.addEventListener('DOMContentLoaded', () => {
           settingsForm.appendChild(input);
         }
       });
-      // Add Save button
+
       const saveBtn = document.createElement('button');
       saveBtn.type = 'submit';
       saveBtn.className = 'save-btn';
       saveBtn.textContent = 'Save Settings';
       settingsForm.appendChild(saveBtn);
 
-      // Store current device key for submission
       settingsForm.dataset.device = deviceKey;
 
-      // Show modal
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
 
-      // Focus first input
       setTimeout(() => {
         settingsForm.querySelector('input:not([type=hidden])')?.focus();
       }, 100);
     })
   });
 
-  // Close modal function
   const closeModal = () => {
     modal.classList.remove('show');
     modal.setAttribute('aria-hidden', 'true');
@@ -166,21 +209,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   modalCloseBtn.addEventListener('click', closeModal);
 
-  // Close modal on outside click
   modal.addEventListener('click', e => {
     if(e.target === modal) {
       closeModal();
     }
   });
 
-  // Handle form submission
   settingsForm.addEventListener('submit', e => {
     e.preventDefault();
 
     const formData = new FormData(settingsForm);
     const deviceKey = settingsForm.dataset.device;
 
-    // Example: Collect and show saved values in alert
     const savedSettings = {};
     deviceSettings[deviceKey].fields.forEach(field => {
       if (field.type === 'checkbox') {
@@ -190,13 +230,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    alert(`Settings saved for ${deviceSettings[deviceKey].title}:\n` + 
-          JSON.stringify(savedSettings, null, 2));
+    saveDeviceSettings(deviceKey, savedSettings);
 
-    closeModal();
+    if (deviceKey === 'networkSettings' && savedSettings.esp32IP) {
+      localStorage.setItem('esp32_ip', savedSettings.esp32IP);
+    }
+
+    const successMessage = document.createElement('div');
+    successMessage.style.cssText = 'background: #32CD32; color: white; padding: 10px; border-radius: 8px; margin-bottom: 10px; text-align: center; font-weight: bold;';
+    successMessage.textContent = '✅ Settings saved successfully!';
+    settingsForm.insertBefore(successMessage, settingsForm.firstChild);
+
+    setTimeout(() => {
+      closeModal();
+    }, 1500);
   });
 
-  // Optional: Simple search filter to show/hide cards by name on active tab
   const searchBox = document.getElementById('searchBox');
   searchBox.addEventListener('input', () => {
     const query = searchBox.value.toLowerCase();
