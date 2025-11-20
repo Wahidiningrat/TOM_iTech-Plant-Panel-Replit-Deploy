@@ -1,6 +1,6 @@
 # 🌿 TOM_iTECH Plant Panel
 
-> Smart Monitoring System for Your Plants — powered by TOM_iTECH Project.
+> Smart Monitoring System for Your Plants — powered by TOM_iTECH Project deploy with replit
 
 [![Run on Replit](https://replit.com/badge/github/Wahidiningrat/TOM_iTech-Plant-Panel)](https://replit.com/@farisamrullah43/TOMiTech-Plant-Panel)
 ---
