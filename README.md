@@ -2,6 +2,8 @@
 
 > Smart Monitoring System for Your Plants — powered by TOM_iTECH Project.
 
+[![Run on Replit](https://replit.com/badge/version/1/run.svg)](https://replit.com/github/Wahidiningrat/TOM_iTech-Plant-Panel)
+
 ---
 
 ## 🧠 Overview
@@ -37,24 +39,14 @@ Menjadi panel pemantau tanaman sederhana namun powerful — cocok untuk:
 
 ## 🚀 Cara Menjalankan (Deploy) via Replit
 
-Anda dapat menggunakan Replit untuk menghosting bagian **Backend** ($Node.js$ / $Express$) dan **Frontend** ($HTML/CSS/JS$) dari proyek secara cepat.
+Cara termudah untuk memulai adalah dengan mengklik tombol **Run on Replit** di atas. Replit akan secara otomatis mengkloning repositori dan menyiapkan lingkungan kerja Anda.
 
-### 1. Membuat Repl Baru dari GitHub
+### 1. Setelah Mengklik Tombol
 
-1.  Buka Replit dan buat **New Repl**.
-2.  Pilih opsi **Import from GitHub**.
-3.  Masukkan URL repositori proyek: `https://github.com/Wahidiningrat/TOM_iTech-Plant-Panel.git`
-4.  Replit akan secara otomatis mendeteksi bahasa proyek dan membuat lingkungan yang sesuai.
+1.  Replit akan mengkloning (`clone`) proyek.
+2.  Pastikan dependensi sudah terinstal. Jika tidak, buka **Shell** dan jalankan `npm install`.
 
-### 2. Konfigurasi dan Instalasi
-
-* **Instal Dependensi:** Buka **Shell** di Replit dan jalankan:
-    ```bash
-    npm install
-    ```
-* **Jalankan Server:** Pastikan Replit menjalankan skrip start yang ada di `package.json`.
-
-### 3. Menjalankan Proyek
+### 2. Menjalankan Proyek
 
 * Klik tombol **Run ▶️** di bagian atas Replit.
 * Dashboard akan muncul di panel **Webview**, siap menerima data sensor dari mikrokontroler (ESP32 / Arduino) melalui URL publik Replit.
