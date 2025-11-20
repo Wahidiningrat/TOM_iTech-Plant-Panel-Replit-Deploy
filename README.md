@@ -5,12 +5,12 @@
 ---
 
 ## 🧠 Overview
-**TOM_iTECH Plant Panel** adalah proyek sistem pemantauan tanaman berbasis teknologi Internet of Things (IoT).  
+**TOM_iTECH Plant Panel** adalah proyek sistem pemantauan tanaman berbasis teknologi Internet of Things (IoT).
 Proyek ini dirancang untuk membaca, menampilkan, dan menganalisis kondisi tanaman secara real-time seperti:
-- 🌡️ Suhu lingkungan  
-- 💧 Kelembapan udara  
-- 🌱 Kelembapan tanah  
-- ☀️ Intensitas cahaya  
+- 🌡️ Suhu lingkungan
+- 💧 Kelembapan udara
+- 🌱 Kelembapan tanah
+- ☀️ Intensitas cahaya
 
 Data dari sensor dikirim ke panel utama (Plant Panel) yang menampilkan status tanaman secara dinamis dan menarik.
 
@@ -29,20 +29,32 @@ Data dari sensor dikirim ke panel utama (Plant Panel) yang menampilkan status ta
 
 ## 🎯 Tujuan Proyek
 Menjadi panel pemantau tanaman sederhana namun powerful — cocok untuk:
-- Proyek belajar IoT 🌱  
-- Eksperimen AI dan otomasi pertanian 🤖  
-- Sistem greenhouse pintar 🏡  
+- Proyek belajar IoT 🌱
+- Eksperimen AI dan otomasi pertanian 🤖
+- Sistem greenhouse pintar 🏡
 
 ---
 
-## 🚀 Cara Menjalankan
-```bash
-# 1. Clone repository
-git clone https://github.com/Wahidiningrat/TOM_iTech-Plant-Panel.git
+## 🚀 Cara Menjalankan (Deploy) via Replit
 
-# 2. Masuk ke folder project
-cd TOM_iTech-Plant-Panel
+Anda dapat menggunakan Replit untuk menghosting bagian **Backend** ($Node.js$ / $Express$) dan **Frontend** ($HTML/CSS/JS$) dari proyek secara cepat.
 
-# 3. Jalankan server (jika ada)
-npm install
-npm start
+### 1. Membuat Repl Baru dari GitHub
+
+1.  Buka Replit dan buat **New Repl**.
+2.  Pilih opsi **Import from GitHub**.
+3.  Masukkan URL repositori proyek: `https://github.com/Wahidiningrat/TOM_iTech-Plant-Panel.git`
+4.  Replit akan secara otomatis mendeteksi bahasa proyek dan membuat lingkungan yang sesuai.
+
+### 2. Konfigurasi dan Instalasi
+
+* **Instal Dependensi:** Buka **Shell** di Replit dan jalankan:
+    ```bash
+    npm install
+    ```
+* **Jalankan Server:** Pastikan Replit menjalankan skrip start yang ada di `package.json`.
+
+### 3. Menjalankan Proyek
+
+* Klik tombol **Run ▶️** di bagian atas Replit.
+* Dashboard akan muncul di panel **Webview**, siap menerima data sensor dari mikrokontroler (ESP32 / Arduino) melalui URL publik Replit.
